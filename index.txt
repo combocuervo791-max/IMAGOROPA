@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tienda de Ropa</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Mi Tienda 👕</h1>
+
+<div class="productos">
+  <div class="producto">
+    <img src="https://via.placeholder.com/150" alt="Remera 1">
+    <p>Remera Blanca - $10</p>
+    <button onclick="agregarAlCarrito('Remera Blanca - $10')">Agregar</button>
+  </div>
+
+  <div class="producto">
+    <img src="https://via.placeholder.com/150" alt="Pantalón">
+    <p>Pantalón Negro - $20</p>
+    <button onclick="agregarAlCarrito('Pantalón Negro - $20')">Agregar</button>
+  </div>
+</div>
+
+<h2>Carrito</h2>
+<ul id="carrito"></ul>
+
+<button onclick="enviarWhatsApp()">Enviar pedido por WhatsApp</button>
+
+<script src="script.js"></script>
+</body>
+body {
+  font-family: Arial;
+  text-align: center;
+}
+
+.productos {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.producto {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+img {
+  width: 150px;
+}
+let carrito = [];
+
+function agregarAlCarrito(producto) {
+  carrito.push(producto);
+  mostrarCarrito();
+}
+
+function mostrarCarrito() {
+  const lista = document.getElementById("carrito");
+  lista.innerHTML = "";
+
+  carrito.forEach(item => {
+    let li = document.createElement("li");
+    li.textContent = item;
+    lista.appendChild(li);
+  });
+}
+
+function enviarWhatsApp() {
+  let mensaje = "Hola! Quiero comprar:\n";
+  carrito.forEach(item => {
+    mensaje += "- " + item + "\n";
+  });
+
+  let telefono = "549XXXXXXXXXX"; // ← tu número
+  let url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, "_blank");
+}
+</html>
