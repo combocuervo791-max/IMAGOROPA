@@ -33,11 +33,16 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
-    .producto img {
-      width: 100%;
-      margin-bottom: 30px;
-      border-radius: 30px;
-    }
+     .producto img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.imagenes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
 
     .whatsapp {
       display: inline-block;
@@ -64,6 +69,7 @@
   <!-- PRODUCTO 1 -->
   <div class="producto">
     <h3>CAMISETA DEPORTIVA</h3>
+  <div class="imagenes">  
     <img src="camisetas.jpg">
     <img src="camisetas1.jpeg">
     <img src="camisetas10.jpg">
