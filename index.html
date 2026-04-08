@@ -45,15 +45,23 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: black;
+  background: rgba(0,0,0,0.6); /* transparente */
   color: white;
   border: none;
-  padding: 10px;
+  width: 60px;        /* 🔥 tamaño fijo */
+  height: 60px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 28px;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.boton:hover {
+  background: rgba(0,0,0,0.9);
+}  
+    
 .boton.izq {
   left: 10px;
 }
