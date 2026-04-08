@@ -5,6 +5,25 @@
   <title>Ropa deportiva</title>
 
   <style>
+    .modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+}
+
+.modal img {
+  display: block;
+  margin: auto;
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 10px;
+}
     .carrusel {
   position: relative;
   width: 100%;
@@ -112,32 +131,32 @@
     <button class="boton izq" onclick="mover(-1)">❮</button>
     
     <div class="carrusel-contenedor" id="carrusel1">
-    <img src="camisetas.jpg">
-    <img src="camisetas1.jpeg">
-    <img src="camisetas10.jpg">
-    <img src="camisetas11.jpg">
-    <img src="camisetas12.jpg">
-    <img src="camisetas13.jpg">
-    <img src="camisetas14.jpg">
-    <img src="camisetas15.jpg">
-    <img src="camisetas16.jpg">
-    <img src="camisetas17.jpg">
-    <img src="camisetas18.jpg">
-    <img src="camisetas19.jpg">
-    <img src="camisetas2.jpg">
-    <img src="camisetas20.jpg">
-    <img src="camisetas2.jpeg">
-    <img src="camisetas3.jpeg">
-    <img src="camisetas3.jpg">  
-    <img src="camisetas4.jpeg">
-    <img src="camisetas4.jpg">  
-    <img src="camisetas5.jpeg">
-    <img src="camisetas6.jpg">  
-    <img src="camisetas7.jpeg">
-    <img src="camisetas7.jpg">  
-    <img src="camisetas8.jpg">  
-    <img src="camisetas9.jpg">  
-    <img src="camisetas9.jpeg">  
+    <img src="camisetas.jpg"onclick="abrirZoom(this)">
+    <img src="camisetas1.jpeg"onclick="abrirZoom(this)">
+    <img src="camisetas10.jpg"onclick="abrirZoom(this)">
+    <img src="camisetas11.jpg"onclick="abrirZoom(this)">
+    <img src="camisetas12.jpg"onclick="abrirZoom(this)">
+    <img src="camisetas13.jpg"onclick="abrirZoom(this)">
+    <img src="camisetas14.jpg"onclick="abrirZoom(this)">
+    <img src="camisetas15.jpg"onclick="abrirZoom(this)">
+    <img src="camisetas16.jpg"onclick="abrirZoom(this)">
+    <img src="camisetas17.jpg"onclick="abrirZoom(this)">
+    <img src="camisetas18.jpg"onclick="abrirZoom(this)">
+    <img src="camisetas19.jpg"onclick="abrirZoom(this)">
+    <img src="camisetas2.jpg"onclick="abrirZoom(this)">
+    <img src="camisetas20.jpg"onclick="abrirZoom(this)">
+    <img src="camisetas2.jpeg"onclick="abrirZoom(this)">
+    <img src="camisetas3.jpeg"onclick="abrirZoom(this)">
+    <img src="camisetas3.jpg"onclick="abrirZoom(this)">  
+    <img src="camisetas4.jpeg"onclick="abrirZoom(this)">
+    <img src="camisetas4.jpg"onclick="abrirZoom(this)">  
+    <img src="camisetas5.jpeg"onclick="abrirZoom(this)">
+    <img src="camisetas6.jpg"onclick="abrirZoom(this)">  
+    <img src="camisetas7.jpeg"onclick="abrirZoom(this)">
+    <img src="camisetas7.jpg"onclick="abrirZoom(this)">  
+    <img src="camisetas8.jpg"onclick="abrirZoom(this)">  
+    <img src="camisetas9.jpg"onclick="abrirZoom(this)">  
+    <img src="camisetas9.jpeg"onclick="abrirZoom(this)">  
   
   </div>
   <button class="boton der" onclick="mover(1)">❯</button>
@@ -194,6 +213,21 @@ function mover(direccion) {
   carrusel.style.transform = `translateX(-${index * 100}%)`;
 }
 </script>
-  
+  <script>
+function abrirZoom(img) {
+  const modal = document.getElementById("modal");
+  const imgZoom = document.getElementById("imgZoom");
+
+  modal.style.display = "block";
+  imgZoom.src = img.src;
+}
+
+function cerrarZoom() {
+  document.getElementById("modal").style.display = "none";
+}
+</script>
+<div id="modal" class="modal" onclick="cerrarZoom()">
+  <img id="imgZoom">
+</div>  
 </body>
 </html>
