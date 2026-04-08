@@ -5,6 +5,43 @@
   <title>Ropa deportiva</title>
 
   <style>
+    .carrusel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carrusel-contenedor {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carrusel img {
+  width: 100%;
+  flex-shrink: 0;
+  border-radius: 10px;
+}
+
+.boton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: black;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 50%;
+}
+
+.boton.izq {
+  left: 10px;
+}
+
+.boton.der {
+  right: 10px;
+}
     body {
       font-family: Arial;
       background: #f5f5f5;
@@ -68,8 +105,13 @@
 
   <!-- PRODUCTO 1 -->
   <div class="producto">
-    <h3>CAMISETA DEPORTIVA</h3>
-  <div class="imagenes">  
+  <h3>CAMISETA DEPORTIVA</h3>
+
+  <div class="carrusel">
+    
+    <button class="boton izq" onclick="mover(-1)">❮</button>
+    
+    <div class="carrusel-contenedor" id="carrusel1">
     <img src="camisetas.jpg">
     <img src="camisetas1.jpeg">
     <img src="camisetas10.jpg">
@@ -98,7 +140,10 @@
     <img src="camisetas9.jpeg">  
   
   </div>
+  <button class="boton der" onclick="mover(1)">❯</button>
 
+  </div>
+        
   <!-- PRODUCTO 2 -->
   <div class="producto">
     <h3>SHORT DEPORTIVO</h3>
@@ -134,6 +179,21 @@
 <a class="whatsapp" href="https://wa.me/542920214841?text=Hola%20quiero%20consultar%20por%20los%20productos" target="_blank">
   📲 Contactar por WhatsApp
 </a>
+<script>
+let index = 0;
 
+function mover(direccion) {
+  const carrusel = document.getElementById("carrusel1");
+  const total = carrusel.children.length;
+
+  index += direccion;
+
+  if (index < 0) index = total - 1;
+  if (index >= total) index = 0;
+
+  carrusel.style.transform = `translateX(-${index * 100}%)`;
+}
+</script>
+  
 </body>
 </html>
