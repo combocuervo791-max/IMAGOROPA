@@ -128,7 +128,8 @@
 
   <div class="carrusel">
     
-    <button class="boton izq" onclick="mover(-1)">❮</button>
+    <button class="boton izq" onclick="mover(-1, 'carrusel1')">❮</button>
+     <button class="boton der" onclick="mover(1, 'carrusel1')">❯</button>
     
     <div class="carrusel-contenedor" id="carrusel1">
     <img src="camisetas.jpg"onclick="abrirZoom(this)">
@@ -159,18 +160,26 @@
     <img src="camisetas9.jpeg"onclick="abrirZoom(this)">  
   
   </div>
-  <button class="boton der" onclick="mover(1)">❯</button>
-
+  <button class="boton der" onclick="mover(1, 'carrusel1')">❯</button>
+  </div>
   </div>
         
   <!-- PRODUCTO 2 -->
   <div class="producto">
     <h3>SHORT DEPORTIVO</h3>
-    <img src="https://via.placeholder.com/300">
-    <img src="https://via.placeholder.com/300">
-    <img src="https://via.placeholder.com/300">
+    <div class="carrusel">
+    
+    <button class="boton izq" onclick="mover(-1, 'carrusel2')">❮</button>
+      <div class="carrusel-contenedor" id="carrusel2">
+    <img src="camisetas.jpg"onclick="abrirZoom(this)">
+    <img src="camisetas1.jpeg"onclick="abrirZoom(this)">
+    <img src="camisetas10.jpg"onclick="abrirZoom(this)">
+    <img src="camisetas11.jpg"onclick="abrirZoom(this)">
+    <img src="camisetas12.jpg"onclick="abrirZoom(this)">
   </div>
-
+  <button class="boton der" onclick="mover(1, 'carrusel2')">❯</button>
+  </div>
+  </div>
   <!-- PRODUCTO 3 -->
   <div class="producto">
     <h3>BUZOS</h3>
@@ -199,17 +208,21 @@
   📲 Contactar por WhatsApp
 </a>
 <script>
-let index = 0;
-
-function mover(direccion) {
-  const carrusel = document.getElementById("carrusel1");
+function mover(direccion, id) {
+  const carrusel = document.getElementById(id);
   const total = carrusel.children.length;
 
+  if (!carrusel.dataset.index) {
+    carrusel.dataset.index = 0;
+  }
+
+  let index = parseInt(carrusel.dataset.index);
   index += direccion;
 
   if (index < 0) index = total - 1;
   if (index >= total) index = 0;
 
+  carrusel.dataset.index = index;
   carrusel.style.transform = `translateX(-${index * 100}%)`;
 }
 </script>
